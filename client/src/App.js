@@ -1,19 +1,25 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { Grid, Row, Col } from 'react-bootstrap';
+import { Button } from 'reactstrap';
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
+      <Grid fluid={true}>
+        <Row>
+          <Col xs={12}> heading 1</Col>
+          <Col xs={12}> heading 2</Col>
+        </Row>
+        <Row>
+          <Col xs={12}> Top Contributors </Col>
+        </Row>
+        <Row>
+          <Col md={6}>99xt list</Col>
+          <Col md={6}> 99xt incubator list </Col>
+        </Row>
+      </Grid>
     );
   }
 }
