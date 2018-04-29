@@ -1,0 +1,14 @@
+.card {
+  text-align: center;
+  border: 3px solid #f47e47;
+  background: #f47e47;
+  color: #fff;
+}
+
+.header-title {
+  font-size: 3rem;
+}
+
+.body-title {
+  font-size: 2rem;
+}
