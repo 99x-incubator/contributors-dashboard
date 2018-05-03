@@ -4,13 +4,23 @@ import './App.css';
 import { Grid, Row, Col } from 'react-bootstrap';
 import { Button } from 'reactstrap';
 import Tranding from './Tranding';
-
+import { User } from './components/Components';
 class App extends Component {
 
   rendingTranding(){
     return <Tranding/>
   }
   render() {
+    const user = {
+      name: 'name',
+      userName: 'username',
+      prCount: 100,
+      commitCount: 100,
+      issuesCount: 100,
+      profilePic:
+        'https://placeholdit.imgix.net/~text?txtsize=33&txt=318%C3%97180&w=318&h=180',
+    };
+
     return (
       <Grid fluid={true}>
         <Row>
@@ -18,7 +28,18 @@ class App extends Component {
           <Col xs={12}> heading 2</Col>
         </Row>
         <Row>
-          <Col xs={12}> Top Contributors </Col>
+          <Col md={3}>
+            <User {...user} />
+          </Col>
+          <Col md={3}>
+            <User {...user} />
+          </Col>
+          <Col md={3}>
+            <User {...user} />
+          </Col>
+          <Col md={3}>
+            <User {...user} />
+          </Col>
         </Row>
         <Row>
           {this.rendingTranding()}
