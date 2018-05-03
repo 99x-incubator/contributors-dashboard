@@ -26,3 +26,31 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+
+
+.pulse-header {
+  height: 70px;
+  min-height: 70px;
+  background-color: #d8d8d8;
+  
+}
+
+.pulse-header .nav > .nav-item > a {
+  position: relative;
+}
+
+.navbar img h3 {
+    margin:0px auto;
+    display:block;
+}
+.header img {
+  float: left;
+  
+}
+
+.header h1 {
+  position: relative;
+  top: 18px;
+  left: 10px;
+}
