@@ -19,8 +19,17 @@ class App extends Component {
     return (
       <Grid fluid={true}>
         <Row>
-          <Col xs={12}> heading 1</Col>
-          <Col xs={12}> heading 2</Col>
+          <Col xs={14}>
+          <div class="navbar pulse-header header">
+            <img src="/assets/logo.png" alt="logo" width="100px" />
+            <h2>Xian's Contributors Dashboard</h2>
+          </div>
+          </Col>
+          <Col xs={12}> 
+          <div class="navbar header2">
+            <marquee>A project by Open-source Initiative</marquee>
+          </div>
+          </Col>
         </Row>
         <Row>
           <Col md={3}>
@@ -39,6 +48,13 @@ class App extends Component {
         <Row>
           <Col md={6}>99xt list</Col>
           <Col md={6}> 99xt incubator list </Col>
+        </Row>
+        <Row>
+        <Col xs={14}>
+         <div class="footer">
+          <p>99X Technology</p>
+        </div>
+          </Col>
         </Row>
       </Grid>
     );
