@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { Grid, Row, Col } from 'react-bootstrap';
-import { User } from './components/Components';
-
+import { Button } from 'reactstrap';
+import { User , Tranding} from './components/Components';
 class App extends Component {
+
   render() {
     const user = {
       name: 'name',
@@ -46,8 +47,9 @@ class App extends Component {
           </Col>
         </Row>
         <Row>
-          <Col md={6}>99xt list</Col>
-          <Col md={6}> 99xt incubator list </Col>
+          <Col>
+            <Tranding/>
+          </Col>
         </Row>
         <Row>
         <Col xs={14}>
