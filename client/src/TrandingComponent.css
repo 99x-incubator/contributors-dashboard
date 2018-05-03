@@ -1,0 +1,19 @@
+.Tranding-Panel{
+    margin: 1px;
+    padding: 8px;
+}
+
+.TrandingRepoList{
+
+}
+
+.TrandingRepoCard{
+    margin: 4px;
+    padding: 8px;
+    border: 1px solid #76756F;
+    border-radius: 5px;
+}
+
+.RepoLogo{
+    width: 100px;
+}

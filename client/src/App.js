@@ -3,8 +3,13 @@ import logo from './logo.svg';
 import './App.css';
 import { Grid, Row, Col } from 'react-bootstrap';
 import { Button } from 'reactstrap';
+import Tranding from './Tranding';
 
 class App extends Component {
+
+  rendingTranding(){
+    return <Tranding/>
+  }
   render() {
     return (
       <Grid fluid={true}>
@@ -16,7 +21,7 @@ class App extends Component {
           <Col xs={12}> Top Contributors </Col>
         </Row>
         <Row>
-          <Col md={6}>99xt list</Col>
+          {this.rendingTranding()}
           <Col md={6}> 99xt incubator list </Col>
         </Row>
       </Grid>
