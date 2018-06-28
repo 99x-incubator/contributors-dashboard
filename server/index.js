@@ -5,20 +5,33 @@ const router = express.Router();
 const bodyParser = require("body-parser");
 const PORT = 3000 || process.env.PORT;
 const topContirbutorsRoutes = require("./routes/topcontributors");
-const weights = require("weights");
+const weights = require("./weights");
+const config = require("config");
 // Top contributors
 // Trending in 99xt
 // Trending in 99xt-incubator
 
 bodyParser.json();
 
+octokit.authenticate({
+  type: 'basic',
+  username: config.get("username"),
+  password: config.get("password")
+});
+
 // app.use(router);
+
+// get all repo contributors
+//
 
 app.get("/v1/topcontributors", async (req, res) => {
   const repoData = await octokit.repos.getForOrg({
     org: "99xt-incubator",
     type: "public"
   });
+
+
+  let fetchedContributors = ["aa"];
 
   repoData.data.forEach(async repo => {
     const repoName = repo.name;
@@ -27,8 +40,20 @@ app.get("/v1/topcontributors", async (req, res) => {
       owner: "99xt-incubator",
       repo: repoName
     });
-    console.log(result);
+
+    result.data.map(contributor => {
+        if(fetchedContributors.length != 0)
+        {
+            fetchedContributors.map(ftCon => {
+            if(ftCon != contributor.login) {
+                fetchedContributors.push(contributor.login);
+            }
+            });
+        }
+    });
   });
+
+  console.log(fetchedContributors);
 });
 
 // topContirbutorsRoutes(router);
