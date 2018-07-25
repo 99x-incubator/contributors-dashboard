@@ -1,83 +1,23 @@
+//imports
 const express = require("express");
-const octokit = require("@octokit/rest")();
+const bodyparser = require("body-parser");
 const app = express();
-const router = express.Router();
-const bodyParser = require("body-parser");
+
+//to avoid cors errors
+const cors=require('cors');
+app.use(cors());
+
+//Setting up body parser
+//making the request body in the JSON format
+app.use(bodyparser.urlencoded({extended:false}));
+app.use(bodyparser.json());
+
+//setting the person routes
+const topcontributorsRoute = require('./routes/topcontributors');
+app.use('/topcontributors', topcontributorsRoute);
+
+//Defining the port
 const PORT = 3000 || process.env.PORT;
-const topContirbutorsRoutes = require("./routes/topcontributors");
-const weights = require("./weights");
-const config = require("config");
-// Top contributors
-// Trending in 99xt
-// Trending in 99xt-incubator
-
-bodyParser.json();
-
-octokit.authenticate({
-  type: 'basic',
-  username: config.get("username"),
-  password: config.get("password")
-});
-
-// app.use(router);
-
-// get all repo contributors
-//
-
-app.get("/v1/topcontributors", async (req, res) => {
-  const repoData = await octokit.repos.getForOrg({
-    org: "99xt-incubator",
-    type: "public"
-  });
-
-
-  let fetchedContributors = ["aa"];
-
-  repoData.data.forEach(async repo => {
-    const repoName = repo.name;
-
-    const result = await octokit.repos.getContributors({
-      owner: "99xt-incubator",
-      repo: repoName
-    });
-
-    result.data.map(contributor => {
-        if(fetchedContributors.length != 0)
-        {
-            fetchedContributors.map(ftCon => {
-            if(ftCon != contributor.login) {
-                fetchedContributors.push(contributor.login);
-            }
-            });
-        }
-    });
-  });
-
-  console.log(fetchedContributors);
-});
-
-// topContirbutorsRoutes(router);
-
-app.get("/v1/trending/99xt", async (req, res) => {
-  const orgRepos = await octokit.repos.getForOrg({
-    org: "99xt",
-    type: "public"
-  });
-
-  console.log(repoData);
-  res.send("Done");
-});
-
-app.get("/v1/trending/99xt-incubator", async (req, res) => {
-  const incubatorRepoData = await octokit.repos.getForOrg({
-    org: "99xt-incubator",
-    type: "public"
-  });
-
-  console.log(repoData);
-  res.send("Done");
-});
-
 app.listen(PORT, () => {
   console.log(`Server running at ${PORT}`);
 });
